@@ -1,0 +1,38 @@
+{
+  "name": "text-readline",
+  "description": "Read text file stream line by line passed through Nodejs request",
+  "version": "0.1.0",
+  "author": "Junmin Ahn",
+  "license": "MIT",
+  "keywords": [
+    "readline",
+    "text",
+    "stream",
+    "node"
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/junminahn/text-readline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/junminahn/text-readline/issues"
+  },
+  "scripts": {
+    "test": "mocha --exit test.js"
+  },
+  "files": [
+    "LICENSE",
+    "HISTORY.md",
+    "index.js"
+  ],
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "form-data": "^3.0.0",
+    "server-destroy": "^1.0.1"
+  }
+}
