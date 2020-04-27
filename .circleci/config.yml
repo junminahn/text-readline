@@ -1,52 +1,17 @@
 version: 2.1
-
+orbs:
+  node: circleci/node@1.1.6
 jobs:
-  tools:
-    docker:
-      - image: circleci/node:10.16.3
-    working_directory: ~/repo
+  build-and-test:
+    executor:
+      name: node/default
     steps:
-      - checkout:
-          path: ~/repo
-
-      - restore_cache:
-          name: restore app yarn package cache
-          keys:
-            - yarn-packages-{{ checksum "~/repo/app/yarn.lock" }}-1
-
-      - run:
-          name: install app dependencies
-          command: yarn install
-
-      - save_cache:
-          name: save app yarn package cache
-          key: yarn-packages-{{ checksum "~/repo/app/yarn.lock" }}-1
-          paths:
-            - ~/repo/app/node_modules
-
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - repo
-
-  unit:
-    docker:
-      - image: circleci/node:10.16.3
-    working_directory: ~/repo
-    environment:
-      CI: false
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run:
-          name: test module
-          command: yarn test
-
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: yarn install
+            - run: yarn test
 workflows:
-  version: 2
-  pipeline:
-    jobs:
-      - tools
-      - unit:
-          requires:
-            - tools
+    build-and-test:
+      jobs:
+        - build-and-test
