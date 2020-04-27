@@ -1,6 +1,7 @@
 # text-readline
 
 [![NPM version](https://img.shields.io/npm/v/text-readline.svg)](https://www.npmjs.com/package/text-readline)
+[![CircleCI](https://circleci.com/gh/junminahn/text-readline.svg?style=svg)](https://circleci.com/gh/junminahn/text-readline)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](/LICENSE)
 
 Read text file stream line by line passed through Nodejs request
